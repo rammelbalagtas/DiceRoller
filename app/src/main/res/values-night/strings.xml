@@ -9,4 +9,5 @@
     <string name="choose_a_die_size_label">Choose a Die size:</string>
     <string name="result_label">Result:</string>
     <string name="die_size_label">Die Size:</string>
+    <string name="history_label">History:</string>
 </resources>

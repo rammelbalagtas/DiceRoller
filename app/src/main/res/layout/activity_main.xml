@@ -64,7 +64,7 @@
 
             <Button
                 android:id="@+id/btn_roll"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/button_roll"
@@ -75,66 +75,77 @@
             <TextView
                 android:id="@+id/label_die_size_spinner"
                 android:layout_width="120dp"
-                android:layout_height="23dp"
-                android:layout_marginEnd="8dp"
+                android:layout_height="wrap_content"
                 android:labelFor="@id/spinner_die_size"
                 android:text="@string/choose_a_die_size_label"
                 app:layout_constraintBottom_toBottomOf="@+id/spinner_die_size"
                 app:layout_constraintEnd_toStartOf="@+id/spinner_die_size"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/spinner_die_size" />
 
             <Spinner
                 android:id="@+id/spinner_die_size"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toStartOf="@+id/switch_number_rolls"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/label_die_size_spinner"
                 app:layout_constraintTop_toBottomOf="@+id/btn_roll"
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
             <Switch
                 android:id="@+id/switch_number_rolls"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:gravity="center|center_vertical|end"
                 android:minHeight="48dp"
                 android:text="@string/roll_twice_text"
-                app:layout_constraintBaseline_toBaselineOf="@+id/label_die_size_spinner"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintBottom_toBottomOf="@+id/spinner_die_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/spinner_die_size"
+                app:layout_constraintTop_toTopOf="@+id/spinner_die_size" />
 
             <TextView
                 android:id="@+id/label_custom_die"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:text="@string/add_die_size_label"
-                app:layout_constraintBaseline_toBaselineOf="@+id/input_die_size"
-                app:layout_constraintEnd_toStartOf="@+id/input_die_size" />
+                app:layout_constraintBottom_toBottomOf="@+id/input_die_size"
+                app:layout_constraintEnd_toStartOf="@+id/input_die_size"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/input_die_size" />
 
             <EditText
                 android:id="@+id/input_die_size"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:autofillHints="@string/no_of_sides_label"
+                android:cursorVisible="false"
                 android:hint="@string/no_of_sides_label"
                 android:inputType="number"
                 android:minHeight="48dp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/btn_save"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/label_custom_die"
                 app:layout_constraintTop_toBottomOf="@+id/spinner_die_size" />
 
             <Button
                 android:id="@+id/btn_save"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:text="@string/button_save"
-                app:layout_constraintBaseline_toBaselineOf="@+id/input_die_size"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintBottom_toBottomOf="@+id/input_die_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/input_die_size"
+                app:layout_constraintTop_toTopOf="@+id/input_die_size" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/roll_history"
@@ -153,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="History:"
+                android:text="@string/history_label"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -163,8 +174,8 @@
                 android:id="@+id/btn_clear_history"
                 android:layout_width="48dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:paddingLeft="8dp"
+                android:layout_marginStart="16dp"
+                android:paddingStart="8dp"
                 app:icon="@android:drawable/ic_menu_delete"
                 app:layout_constraintBaseline_toBaselineOf="@+id/history_label"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -174,10 +185,10 @@
 
             <View
                 android:id="@+id/divider"
-                android:layout_width="409dp"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent"
