@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rammel_DiceRoller</string>
     <string name="no_of_sides_label">No. of Sides</string>
     <string name="button_roll">Roll</string>
     <string name="add_die_size_label">Add a die size:</string>
