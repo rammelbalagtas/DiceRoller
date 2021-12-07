@@ -27,26 +27,28 @@ import java.util.Collections;
 public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
-    public ArrayList<Integer> dieSizeList;
-    public Die currentDie;
-    public DieRolls dieRolls;
-    public int dieSize;
-    public boolean willRollTwice;
-    public Spinner dieSizeSpinner;
-    public ArrayAdapter<Integer> dieSizeAdapter;
-    public Switch rollTwiceSwitch;
-    public EditText inputDieSize;
-    public TextView result1Text;
-    public TextView result2Text;
+
+    private ArrayList<Integer> dieSizeList;
+    private int dieSize;
+    private boolean willRollTwice;
+    private Die currentDie;
+    private DieRolls dieRolls;
+
+    private Spinner dieSizeSpinner;
+    private ArrayAdapter<Integer> dieSizeAdapter;
     private HistoryAdapter historyAdapter;
+    private Switch rollTwiceSwitch;
+    private EditText inputDieSize;
+    private TextView result1Text;
+    private TextView result2Text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedPreferences = getSharedPreferences("SharedPref2", Context.MODE_PRIVATE);
-
+        // Instantiate SharedPreferences
+        sharedPreferences = getSharedPreferences("SharedPreferences1", Context.MODE_PRIVATE);
         // Roll results
         result1Text = findViewById(R.id.tv_result1);
         result2Text = findViewById(R.id.tv_result2);
@@ -76,13 +78,14 @@ public class MainActivity extends AppCompatActivity {
         getSharedPrefData();
         Collections.sort(dieSizeList);
 
-        // Spinner configuration
+        // Configure spinner element
         dieSizeSpinner = findViewById(R.id.spinner_die_size);
         dieSizeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, dieSizeList);
         dieSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dieSizeSpinner.setAdapter(dieSizeAdapter);
         dieSizeSpinner.setOnItemSelectedListener(onSelectDie);
 
+        // Set values of results
         rollTwiceSwitch.setChecked(willRollTwice);
         if (currentDie == null) {
             result1Text.setText("0");
@@ -92,12 +95,14 @@ public class MainActivity extends AppCompatActivity {
             result2Text.setText(String.valueOf(currentDie.getResult2()));
         }
 
+        // Set switch setting
         if (willRollTwice) {
             result2Text.setVisibility(View.VISIBLE);
         } else {
             result2Text.setVisibility(View.GONE);
         }
 
+        // Configure recycler
         RecyclerView recycler = findViewById(R.id.roll_history);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(layoutManager);
@@ -122,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    /**
+     * Event handler for ROLL button
+     */
     private final View.OnClickListener onClickRoll = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -135,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Event handler for SAVE button
+     */
     private final View.OnClickListener onClickSave = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -148,6 +159,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Event handler for DELETE button
+     */
     private final View.OnClickListener onClickDelete = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -156,6 +170,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Event handler for switch button
+     */
     private final CompoundButton.OnCheckedChangeListener onChangeSwitch = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton toggleButton, boolean isToggled) {
@@ -169,6 +186,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Event handler for spinner element
+     */
     private final AdapterView.OnItemSelectedListener onSelectDie = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -180,6 +200,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Store data to SharedPreferences
+     */
     public void saveData() {
         Gson gson = new Gson();
         String jsonDie = gson.toJson(currentDie);
@@ -193,6 +216,9 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    /**
+     * Retrieve data from SharedPreferences
+     */
     public void getSharedPrefData() {
 
         willRollTwice = sharedPreferences.getBoolean("willRollTwice", false);

@@ -51,7 +51,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         Die die = dieRolls.get(position);
         viewholder.getDieSizeText().setText(String.valueOf(die.getNumberOfSides()));
         if (die.willRollTwice()) {
-            viewholder.getDieResultText().setText(String.valueOf(die.getResult1()) + ", " + String.valueOf(die.getResult2()));
+            viewholder.getDieResultText().setText(String.valueOf(die.getResult1())
+                    + ", "
+                    + String.valueOf(die.getResult2()));
         } else {
             viewholder.getDieResultText().setText(String.valueOf(die.getResult1()));
         }

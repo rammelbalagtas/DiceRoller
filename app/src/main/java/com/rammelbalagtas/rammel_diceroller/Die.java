@@ -6,6 +6,7 @@ public class Die {
     private int result2;
     private boolean willRollTwice;
 
+    // Constructor
     public Die(int numberOfSides, boolean willRollTwice) {
         this.numberOfSides = numberOfSides;
         this.willRollTwice = willRollTwice;
@@ -15,9 +16,15 @@ public class Die {
         }
     }
 
+    /**
+     * Roll die method
+     * @return
+     */
     public int roll() {
         return (int) (Math.random() * numberOfSides) + 1;
     }
+
+    // Getter methods
     public int getNumberOfSides() {
         return numberOfSides;
     }
