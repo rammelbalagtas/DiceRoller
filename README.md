@@ -1,5 +1,3 @@
-#Dice Roller App
-
 ### Project Description
 An app which can roll dice with different number of sides as the user wishes.
 
