@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="myTextViewColor" format="color"/>
+    <attr name="myButtonTextColor" format="color"/>
+    <attr name="myButtonBackgroundColor" format="color"/>
+    <attr name="myResultBackgroundColor" format="color"/>
+    <attr name="myAppBackgroundColor" format="color"/>
+</resources>

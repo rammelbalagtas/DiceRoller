@@ -1,6 +1,7 @@
 package com.rammelbalagtas.rammel_diceroller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,8 +15,8 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner dieSizeSpinner;
     private ArrayAdapter<Integer> dieSizeAdapter;
     private HistoryAdapter historyAdapter;
-    private Switch rollTwiceSwitch;
+    private SwitchCompat rollTwiceSwitch;
     private EditText inputDieSize;
     private TextView result1Text;
     private TextView result2Text;
@@ -117,12 +118,12 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    protected void onStop(){
+    protected void onStop() {
         saveData();
         super.onStop();
     }
 
-    protected void onDestroy(){
+    protected void onDestroy() {
         saveData();
         super.onDestroy();
     }
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             if (willRollTwice) {
                 result2Text.setText(String.valueOf(currentDie.getResult2()));
             }
-            dieRolls.getRollList().add(currentDie);
+            dieRolls.getRollList().add(0, currentDie);
             historyAdapter.notifyDataSetChanged();
         }
     };
@@ -149,6 +150,10 @@ public class MainActivity extends AppCompatActivity {
     private final View.OnClickListener onClickSave = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            if (inputDieSize.getText().toString().equals("")) {
+                Toast.makeText(getApplicationContext(), "Please enter a value", Toast.LENGTH_LONG).show();
+                return;
+            }
             int customDieSize = Integer.parseInt(inputDieSize.getText().toString());
             if (!dieSizeList.contains(customDieSize)) {
                 dieSizeAdapter.add(customDieSize);
@@ -226,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
         String jsonDie = sharedPreferences.getString("currentDie", null);
         if (jsonDie != null) {
-           currentDie = gson.fromJson(jsonDie, Die.class);
+            currentDie = gson.fromJson(jsonDie, Die.class);
         } else {
             currentDie = null;
         }
@@ -239,7 +244,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         String jsonDieSize = sharedPreferences.getString("dieSizeList", null);
-        Type type = new TypeToken<ArrayList<Integer>>() {}.getType();
+        Type type = new TypeToken<ArrayList<Integer>>() {
+        }.getType();
         dieSizeList = gson.fromJson(jsonDieSize, type);
         // checking below if the array list is empty or not
         if (dieSizeList == null) {

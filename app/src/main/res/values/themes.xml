@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Rammel_DiceRoller" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">#b1bfca</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -11,6 +11,41 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
         <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/myTextViewStyle</item>
+
+        <!-- Dynamic values for light and dark mode -->
+        <!-- Text color for Text Views-->
+        <item name="myTextViewColor">#000000</item>
+        <!-- Button text color -->
+        <item name="myButtonTextColor">#000000</item>
+        <!-- Button background color -->
+        <item name="myButtonBackgroundColor">#90caf9</item>
+        <!-- Result background color -->
+        <item name="myResultBackgroundColor">#80deea</item>
+        <!-- App background color -->
+        <item name="myAppBackgroundColor">#e3f2fd</item>
     </style>
+
+    <!-- Generic style for Text Views -->
+    <style name="myTextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">?attr/myTextViewColor</item>
+    </style>
+
+    <!-- Specific style for scores -->
+    <style name="myTextViewStyle.Result">
+        <item name="android:textSize">80sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">?attr/myResultBackgroundColor</item>
+        <item name="android:textColor">#616161</item>
+    </style>
+
+    <!-- style for buttons -->
+    <style name="myButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">?attr/myButtonTextColor</item>
+        <item name="backgroundTint">?attr/myButtonBackgroundColor</item>
+    </style>
+
 </resources>

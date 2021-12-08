@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/myAppBackgroundColor">
 
     <ScrollView
         android:layout_width="0dp"
@@ -18,18 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/text_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/dice_roller_header"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
@@ -41,29 +29,27 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_header">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/tv_result1"
+                    style="@style/myTextViewStyle.Result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
-                    android:padding="10dp"
-                    android:textSize="80sp"
                     tools:text="0" />
 
                 <TextView
                     android:id="@+id/tv_result2"
+                    style="@style/myTextViewStyle.Result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textSize="80sp"
-                    android:visibility="visible"
                     tools:text="0" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/btn_roll"
+                style="@style/myButtonStyle"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -74,7 +60,7 @@
 
             <TextView
                 android:id="@+id/label_die_size_spinner"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:labelFor="@id/spinner_die_size"
                 android:text="@string/choose_a_die_size_label"
@@ -86,7 +72,7 @@
 
             <Spinner
                 android:id="@+id/spinner_die_size"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:minHeight="48dp"
@@ -96,22 +82,23 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_roll"
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_number_rolls"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:gravity="center|center_vertical|end"
+                android:gravity="start|center_vertical|end"
                 android:minHeight="48dp"
                 android:text="@string/roll_twice_text"
                 app:layout_constraintBottom_toBottomOf="@+id/spinner_die_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/spinner_die_size"
-                app:layout_constraintTop_toTopOf="@+id/spinner_die_size" />
+                app:layout_constraintTop_toTopOf="@+id/spinner_die_size"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/label_custom_die"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/add_die_size_label"
                 app:layout_constraintBottom_toBottomOf="@+id/input_die_size"
@@ -122,7 +109,7 @@
 
             <EditText
                 android:id="@+id/input_die_size"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:autofillHints="@string/no_of_sides_label"
@@ -134,11 +121,13 @@
                 app:layout_constraintEnd_toStartOf="@+id/btn_save"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/label_custom_die"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_die_size" />
+                app:layout_constraintTop_toBottomOf="@+id/spinner_die_size"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/btn_save"
-                android:layout_width="120dp"
+                style="@style/myButtonStyle"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/button_save"
                 app:layout_constraintBottom_toBottomOf="@+id/input_die_size"
@@ -172,10 +161,11 @@
 
             <Button
                 android:id="@+id/btn_clear_history"
+                style="@style/myButtonStyle"
                 android:layout_width="48dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:paddingStart="8dp"
+                android:paddingStart="9dp"
                 app:icon="@android:drawable/ic_menu_delete"
                 app:layout_constraintBaseline_toBaselineOf="@+id/history_label"
                 app:layout_constraintEnd_toEndOf="parent"
