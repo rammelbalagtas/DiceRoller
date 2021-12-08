@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Instantiate SharedPreferences
-        sharedPreferences = getSharedPreferences("SharedPreferences1", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE);
         // Roll results
         result1Text = findViewById(R.id.tv_result1);
         result2Text = findViewById(R.id.tv_result2);
